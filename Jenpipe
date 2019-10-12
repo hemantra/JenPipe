@@ -31,12 +31,6 @@ pipeline {
                                 }
                         }
                         stage('Commissioning') {
-                        agent {
-                                docker {
-                                        reuseNode false
-					image 'ubuntu'
-                                        }
-			}
 				steps {
 					echo 'Running validation tests ..'
 				}
