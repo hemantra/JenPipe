@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    stages {
+        stage('Discovery') {
+                steps {
+                        echo 'Node Discovery completed'
+			
+                }
+        }
+	    stage('Provisioning'){
+		    
+		steps {
+			input('Do you want to install OS')
+        }
+	    }
+        stage('OS Install') {
+                when {
+                        not {
+                                branch "master"
+                        }
+                }
+                steps {
+			echo "OS up"
+                        }
+        }
+        stage('Configuration') {
+                parallel {
+                        stage('RAMDisk') {
+                                steps{
+                                        echo "Deploying OS ..."
+                                }
+                        }
+                        stage('Commissioning') {
+                        agent {
+                                docker {
+                                        reuseNode false
+					image 'ubuntu'
+                                        }
+			}
+				steps {
+					echo 'Running validation tests ..'
+				}
+                               
+			}  }
+        }
+    }
+}
