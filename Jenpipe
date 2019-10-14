@@ -25,9 +25,9 @@ pipeline {
         }
         stage('Configuration') {
                 parallel {
-                        stage('RAMDisk') {
+                        stage('Validation') {
                                 steps{
-                                        echo "Deploying OS ..."
+                                        echo "Monitoring Agents installed ..."
                                 }
                         }
                         stage('Commissioning') {
