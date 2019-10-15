@@ -21,6 +21,7 @@ pipeline {
                 }
                 steps {
 			echo "OS up"
+			sleep 10
                         }
         }
         stage('Configuration') {
@@ -30,7 +31,7 @@ pipeline {
                                         echo "Monitoring Agents installed ..."
                                 }
                         }
-                        stage('Commissioning') {
+                        stage('Node ready') {
 				steps {
 					echo 'Running validation tests ..'
 				}
