@@ -11,6 +11,7 @@ pipeline {
 		    
 		steps {
 			input('Do you want to install OS')
+			sleep 10
         }
 	    }
         stage('OS Install') {
@@ -28,6 +29,7 @@ pipeline {
                         stage('Staging Validation') {
                                 steps{
                                         echo "Running the unit test..."
+					sleep 10
                                 }
                         }
                         stage('Production rollout') {
