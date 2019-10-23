@@ -32,10 +32,7 @@ pipeline {
                         }
                         stage('Production rollout') {
                         agent {
-                                docker {
-                                        reuseNode false
-					image 'ubuntu'
-                                        }
+                                
 			}
 				steps {
 					echo 'Getting server ready..'
