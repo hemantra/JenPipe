@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    stages {
+        stage('Discover') {
+                steps {
+                        echo 'Server discovery in progress'
+			
+                }
+        }
+	    stage('Provisioning'){
+		    
+		steps {
+			input('Do you want to install OS')
+        }
+	    }
+        stage('OS Install') {
+                when {
+                        not {
+                                branch "master"
+                        }
+                }
+                steps {
+			echo "Kernel upgrade"
+                        }
+        }
+        stage('Configuration') {
+                parallel {
+                        stage('Staging Validation') {
+                                steps{
+                                        echo "Running the unit test..."
+                                }
+                        }
+                        stage('Production rollout') {
+                        agent {
+                                docker {
+                                        reuseNode false
+					image 'ubuntu'
+                                        }
+			}
+				steps {
+					echo 'Getting server ready..'
+				}
+                               
+			}  }
+        }
+    }
+}
