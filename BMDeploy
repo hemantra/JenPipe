@@ -22,6 +22,7 @@ pipeline {
                 }
                 steps {
 			echo "Kernel upgrade"
+			sleep 20
                         }
         }
         stage('Configuration') {
