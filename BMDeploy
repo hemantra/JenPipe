@@ -33,7 +33,7 @@ pipeline {
 					sleep 10
                                 }
                         }
-                        stage('Production rollout') {
+                        stage('Server Ready') {
    
 				steps {
 					echo 'Getting server ready..'
