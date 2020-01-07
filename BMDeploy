@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Configuration') {
                 parallel {
-                        stage('Staging Validation') {
+                        stage('Monitoring agents installtion') {
                                 steps{
                                         echo "Running the unit test..."
 					sleep 10
